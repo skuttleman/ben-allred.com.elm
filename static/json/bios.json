@@ -1,0 +1,15 @@
+{
+  "bios": [{
+    "header": "My Story",
+    "paragraphs": [
+      "In the fall of 2015, I attended Galvanize's Full Stack Web Developer program, a bootcamp-style learn-to-code course. I spent eight or more hours every day for six months coding browser-based applications, building web servers, interacting with databases, consuming third-party APIs, and learning about build tools and frameworks. If it wasn't for Galvanize, I doubt I would have had the opportunity to become a professional developer.",
+      "I didn't expect to stop learning after Galvanize, but for some reason I thought the volume of challenges and unfamiliar obstacles would settle to a more sustainable pace. I was wrong. In the spring of 2016, I began working for DISH as a web developer where I continued to learn and grow at a rate that astounded me. This is exactly what I said I wanted when I left Galvanize. Be careful what you wish for.",
+      "While at DISH, I was introduced to and fell in love with a LISP: Clojure. I knew that working with Clojure or any LISP at DISH was not really an option, so I started searching for a company that was interested in building things in Clojure and teaching myself Clojure on the side."
+    ]
+  }, {
+    "header": "...Lately",
+    "paragraphs": [
+      "I began working at Aclaimant in the summer of 2017. There I am helping to build a worksite safety, incident, and claims management tool using Clojure and Clojurescript. I have found that working with technologies that I love has made my career even more rewarding. Whatever comes next, whatever choices I make about my future, I know that choosing passion above all will be the happier decision."
+    ]
+  }]
+}

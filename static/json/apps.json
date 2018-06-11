@@ -1,0 +1,87 @@
+{
+  "apps": [{
+      "id": 1,
+      "title": "Collaj",
+      "repos": [{
+        "name": "repo",
+        "link": "/collaj"
+      }],
+      "link": "https://clojars.org/com.ben-allred/collaj",
+      "tagLine": "A Clojure / Clojurescript port of Redux",
+      "description": "A standalone state management system based on Redux with some customization options that make it work with Reagent.",
+      "technologies": [
+        "clojure",
+        "clojars"
+      ]
+    }, {
+      "id": 2,
+      "title": "This Website",
+      "repos": [{
+        "name": "repo",
+        "link": "/ben-allred.com.cljs"
+      }],
+      "link": "https://www.ben-allred.com/",
+      "tagLine": "My porfolio",
+      "description": "A recent rewrite of my personal web site using Clojurescript",
+      "technologies": [
+        "clojurescript",
+        "reagent"
+      ]
+    }, {
+      "id": 3,
+      "title": "Express Outbound",
+      "repos": [{
+        "name": "repo",
+        "link": "/express-outbound"
+      }],
+      "link": "https://www.npmjs.com/package/express-outbound",
+      "tagLine": "An ExpressJS library that extends response mechanism.",
+      "description": "Enhance your ExpressJS app's middleware chain to allow access to the response before being sent out. Designed to be used for logging or enriching responses.",
+      "technologies": [
+        "node/express",
+        "npm"
+      ]
+    }, {
+      "id": 4,
+      "title": "Git Push It",
+      "repos": [{
+        "name": "repo",
+        "link": "/git-push-it"
+      }],
+      "link": "https://www.npmjs.com/package/git-push-it",
+      "tagLine": "A fun plugin for 'git'.",
+      "description": "An open source project for playing appropriate music while pushing your code with git.",
+      "technologies": [
+        "git",
+        "npm"
+      ]
+    }, {
+      "id": 5,
+      "title": "Space Raptors",
+      "repos": [{
+        "name": "repo",
+        "link": "/space-raptors"
+      }],
+      "link": "http://www.raptors.space/",
+      "tagLine": "Defeat the carnivorous raptors. The universe needs you.",
+      "description": "A game-jam style group project primarily built over a week and a half. Most people on the team, myself included, had any prior experience with either Unity3D or making games. My primary contribution was enemy AI.",
+      "technologies": [
+        "unity3d"
+      ]
+    }, {
+      "id": 6,
+      "title": "Pizza Time",
+      "repos": [{
+        "name": "front-end repo",
+        "link": "/pizzatime"
+      }],
+      "link": "https://pizzatime.firebaseapp.com/",
+      "tagLine": "The World's Most Accurate Clock",
+      "description": "In a time that I was learning a ton about server-side programming, I wanted to see if I could still do something fully front-end. I threw this together in an hour or so in response to a joke that emerged early that day among my friends. Is it weird that I'm more proud of this than anything else in my portfolio?",
+      "technologies": [
+        "scss",
+        "jQuery"
+      ]
+    }
+  ]
+}

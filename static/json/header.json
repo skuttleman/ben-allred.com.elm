@@ -1,0 +1,38 @@
+{
+  "navs": [{
+    "link": "/",
+    "text": "home",
+    "iClass": "fa fa-home",
+    "bgImage": "/static/images/snow.jpg"
+  }, {
+    "link": "/bio",
+    "text": "bio",
+    "iClass": "fa fa-info-circle",
+    "bgImage": "/static/images/hiking.jpg"
+  }, {
+    "link": "/portfolio",
+    "text": "portfolio",
+    "iClass": "fa fa-folder-open",
+    "bgImage": "/static/images/view.jpg"
+  }, {
+    "link": "/music",
+    "text": "music",
+    "iClass": "fa fa-music",
+    "bgImage": "/static/images/music.jpg"
+  }, {
+    "link": "https://docs.google.com/document/d/1JWDF64xzcW-KJVxNyq5I8TJ3pMdS1fVdv_oKDuMLago/export?format=pdf&id=1JWDF64xzcW-KJVxNyq5I8TJ3pMdS1fVdv_oKDuMLago",
+    "text": "resume",
+    "iClass": "fa fa-download",
+    "bgImage": null
+  }],
+  "links": [{
+    "link": "http://www.github.com/skuttleman",
+    "iClass": "fa fa-github-square"
+  }, {
+    "link": "http://www.linkedin.com/in/allredbd",
+    "iClass": "fa fa-linkedin-square"
+  }, {
+    "link": "mailto://skuttleman@gmail.com",
+    "iClass": "fa fa-envelope-square"
+  }]
+}
