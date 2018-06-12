@@ -1,24 +1,30 @@
 module Models exposing (..)
 
+import Html exposing (Html)
+import Navigation
 import RemoteData exposing (WebData)
 
 
 type alias HeaderData =
   { navs : List NavData
-  , links : List LinkData
-  }
+  , links : List LinkData }
 
 type alias LinkData =
   { link : String
-  , iClass : String
-  }
+  , iClass : String }
 
 type alias NavData =
   { link : String
   , iClass : String
   , text : String
-  , bgImage : Maybe String
-  }
+  , bgImage : Maybe String }
+
+type alias BioData =
+  { bios : List BioItem }
+
+type alias BioItem =
+  { header : String
+  , paragraphs : List String }
 
 type Route =
   Home
@@ -28,7 +34,41 @@ type Route =
   | NotFound
 
 type alias Model =
-  { route : Route
-  , header : (WebData HeaderData)
-  , page : Maybe NavData
-  }
+    { route : Route
+    , header : (WebData HeaderData)
+    , page : Maybe NavData
+    , bio : (WebData BioData) }
+
+
+routeToPath : Route -> String
+routeToPath route =
+  case route of
+    Bio -> "/bio"
+    Portfolio -> "/portfolio"
+    Music -> "/music"
+    Home -> "/"
+    _ -> "/notfound"
+
+
+pathToRoute : String -> Route
+pathToRoute path =
+  case path of
+    "/bio" -> Bio
+    "/portfolio" -> Portfolio
+    "/music" -> Music
+    "/" -> Home
+    _ -> NotFound
+
+
+routeToPage : Route -> (WebData HeaderData) -> Maybe NavData
+routeToPage route headerData =
+  let
+    path = routeToPath route
+  in
+    case headerData of
+      RemoteData.Success data ->
+        data.navs
+          |> List.filter (\nav -> nav.link == path)
+          |> List.head
+      _ ->
+        Nothing

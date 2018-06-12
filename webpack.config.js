@@ -1,5 +1,11 @@
 var path = require('path');
 
+var proxy = {
+  target: 'http://localhost:3000/index.html',
+  secure: false,
+  ignorePath: true
+};
+
 module.exports = {
   entry: {
     app: [
@@ -52,7 +58,10 @@ module.exports = {
   devServer: {
     inline: true,
     stats: { colors: true },
+    proxy : {
+      '/bio': proxy,
+      '/portfolio': proxy,
+      '/music': proxy
+    },
   },
-
-
 };

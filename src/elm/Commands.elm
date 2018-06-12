@@ -7,16 +7,21 @@ import Msgs exposing (..)
 import Models exposing (..)
 import RemoteData
 
+fetch : String -> Decode.Decoder t -> (RemoteData.WebData t -> Msg) -> Cmd Msg
+fetch url decoder msg =
+  Http.get url decoder
+        |> RemoteData.sendRequest
+        |> Cmd.map msg
+
+
 fetchHeader : Cmd Msg
 fetchHeader =
-    Http.get headerUrl headerDecoder
-        |> RemoteData.sendRequest
-        |> Cmd.map OnFetchHeader
+  fetch "/static/json/header.json" headerDecoder OnHeaderReceived
 
 
-headerUrl : String
-headerUrl =
-    "/static/json/header.json"
+fetchBio : Cmd Msg
+fetchBio =
+  fetch "/static/json/bios.json" bioDecoder OnBioReceived
 
 
 headerDecoder : Decode.Decoder HeaderData
@@ -40,3 +45,16 @@ linkDecoder =
   decode LinkData
     |> required "link" Decode.string
     |> required "iClass" Decode.string
+
+
+bioDecoder : Decode.Decoder BioData
+bioDecoder =
+  decode BioData
+    |> required "bios" (Decode.list bioItemDecoder)
+
+
+bioItemDecoder : Decode.Decoder BioItem
+bioItemDecoder =
+  decode BioItem
+    |> required "header" Decode.string
+    |> required "paragraphs" (Decode.list Decode.string)
