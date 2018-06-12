@@ -17,6 +17,8 @@ update msg model =
         ( { model | header = header, page = routeToPage model.route header }, Cmd.none )
       OnBioReceived bio ->
         ( { model | bio = bio }, Cmd.none )
+      OnAppsReceived apps ->
+        ( { model | apps = apps }, Cmd.none )
       ChangeLocation path ->
         ( model , Navigation.newUrl path )
       _ ->
@@ -43,5 +45,6 @@ init location =
   ( { route = pathToRoute location.pathname
     , header = RemoteData.Loading
     , bio = RemoteData.Loading
+    , apps = RemoteData.Loading
     , page = Nothing }
-  , Cmd.batch [ fetchHeader, fetchBio ] )
+  , Cmd.batch [ fetchHeader, fetchBio, fetchApps ] )

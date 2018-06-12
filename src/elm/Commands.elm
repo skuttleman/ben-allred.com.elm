@@ -24,6 +24,11 @@ fetchBio =
   fetch "/static/json/bios.json" bioDecoder OnBioReceived
 
 
+fetchApps : Cmd Msg
+fetchApps =
+  fetch "/static/json/apps.json" appsDecoder OnAppsReceived
+
+
 headerDecoder : Decode.Decoder HeaderData
 headerDecoder =
   decode HeaderData
@@ -58,3 +63,28 @@ bioItemDecoder =
   decode BioItem
     |> required "header" Decode.string
     |> required "paragraphs" (Decode.list Decode.string)
+
+
+appsDecoder : Decode.Decoder AppData
+appsDecoder =
+  decode AppData
+    |> required "apps" (Decode.list appItemDecoder)
+
+
+appItemDecoder : Decode.Decoder AppItem
+appItemDecoder =
+  decode AppItem
+    |> required "id" Decode.int
+    |> required "title" Decode.string
+    |> required "repos" (Decode.list repoDecoder)
+    |> required "link" Decode.string
+    |> required "tagLine" Decode.string
+    |> required "description" Decode.string
+    |> required "technologies" (Decode.list Decode.string)
+
+
+repoDecoder : Decode.Decoder Repo
+repoDecoder =
+  decode Repo
+    |> required "name" Decode.string
+    |> required "link" Decode.string

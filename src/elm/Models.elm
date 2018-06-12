@@ -35,9 +35,30 @@ type Route =
 
 type alias Model =
     { route : Route
-    , header : (WebData HeaderData)
+    , header : WebData HeaderData
     , page : Maybe NavData
-    , bio : (WebData BioData) }
+    , bio : WebData BioData
+    , apps : WebData AppData }
+
+
+type alias AppData =
+  { apps : List AppItem }
+
+
+type alias AppItem =
+  { id : Int
+  , title : String
+  , repos : List Repo
+  , link : String
+  , tagLine : String
+  , description : String
+  , technologies : List String }
+
+
+type alias Repo =
+  { name : String
+  , link : String}
+
 
 
 routeToPath : Route -> String

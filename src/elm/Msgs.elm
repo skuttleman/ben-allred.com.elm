@@ -10,4 +10,5 @@ type Msg =
   | OnLocationChanged Navigation.Location
   | OnHeaderReceived (WebData HeaderData)
   | OnBioReceived (WebData BioData)
+  | OnAppsReceived (WebData AppData)
   | ChangeLocation String

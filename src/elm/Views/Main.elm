@@ -7,6 +7,7 @@ import Msgs exposing (Msg)
 import Views.Bio as BioView
 import Views.Header as Header
 import Views.Home as Home
+import Views.Portfolio as PortfolioView
 
 
 bgImage : Model -> String
@@ -16,6 +17,13 @@ bgImage model =
           bgImage
       _ -> ""
 
+pageTitle : Model -> String
+pageTitle model =
+  case Maybe.map .text model.page of
+    Just title ->
+      title
+    _ -> ""
+
 
 rootView : (Model -> Html Msg) -> Model -> Html Msg
 rootView component model =
@@ -23,13 +31,14 @@ rootView component model =
     [ div [ class "image-container" ]
       [ img [ class "bg-image", src (bgImage model) ] [] ]
     , header [] [ Header.view model]
-    , main_ [ class "app" ] [ component model ] ]
+    , main_ [ class ("app " ++ (pageTitle model)) ] [ component model ] ]
 
 
 routeToComponent : Route -> Model -> Html Msg
 routeToComponent route =
   case route of
     Bio -> BioView.view
+    Portfolio -> PortfolioView.view
     _ -> Home.view
 
 
