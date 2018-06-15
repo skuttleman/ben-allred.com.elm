@@ -1,5 +1,7 @@
 module Views.Utils exposing (..)
 
+import Html
+import Html.Attributes exposing (class)
 import RemoteData exposing(WebData, RemoteData(..))
 
 
@@ -10,3 +12,11 @@ webDataToList headerData f =
       f data
     _ ->
       []
+
+
+classIf : List ( String, Bool ) -> String -> Html.Attribute msg
+classIf classRules initial =
+  classRules
+    |> List.foldl (\( s, b ) -> \str -> if b then str ++ " " ++ s else str) initial
+    |> String.trim
+    |> class

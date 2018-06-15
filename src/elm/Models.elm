@@ -1,7 +1,5 @@
 module Models exposing (..)
 
-import Html exposing (Html)
-import Navigation
 import RemoteData exposing (WebData)
 
 
@@ -38,7 +36,18 @@ type alias Model =
     , header : WebData HeaderData
     , page : Maybe NavData
     , bio : WebData BioData
-    , apps : WebData AppData }
+    , apps : WebData AppData
+    , songs : WebData SongData
+    , albums : WebData AlbumData
+    , music : MusicModel }
+
+
+type alias MusicModel =
+  { visible : Bool
+  , song : Maybe Song
+  , album : Maybe Album
+  , playing : Bool
+  , expanded : Bool }
 
 
 type alias AppData =
@@ -59,6 +68,27 @@ type alias Repo =
   { name : String
   , link : String}
 
+
+type alias SongData =
+  { songs : List Song }
+
+
+type alias Song =
+  { id : Int
+  , title : String
+  , src : String
+  , albumId : Int }
+
+
+type alias AlbumData =
+  { albums : List Album }
+
+
+type alias Album =
+  { id : Int
+  , title : String
+  , art : String
+  , itunes : String }
 
 
 routeToPath : Route -> String

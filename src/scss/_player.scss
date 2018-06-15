@@ -18,7 +18,7 @@
       border: 1px solid rgba(0, 0, 0, 0);
     }
     &.expanded {
-      height: 70px;
+      height: 110px;
       border: 1px solid $GREY;
       padding: $MAIN-PADDING;
     }
@@ -45,6 +45,9 @@
     }
     *:not(:last-child) {
       margin-right: 5px;
+      &:nth-child(3) {
+        margin-top: 5px;
+      }
     }
     img {
       height: calc(#{$PLAYER-HEIGHT} - 5px);

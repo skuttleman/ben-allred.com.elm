@@ -11,4 +11,12 @@ type Msg =
   | OnHeaderReceived (WebData HeaderData)
   | OnBioReceived (WebData BioData)
   | OnAppsReceived (WebData AppData)
+  | OnSongsReceived (WebData SongData)
+  | OnAlbumsReceived (WebData AlbumData)
   | ChangeLocation String
+  | OpenMusicPlayer
+  | CloseMusicPlayer
+  | SelectSong Song Album
+  | OnSongEnded
+  | TogglePlayerExpanded
+  | TogglePlayerPlaying

@@ -29,6 +29,16 @@ fetchApps =
   fetch "/static/json/apps.json" appsDecoder OnAppsReceived
 
 
+fetchSongs : Cmd Msg
+fetchSongs =
+  fetch "/static/json/songs.json" songsDecoder OnSongsReceived
+
+
+fetchAlbums : Cmd Msg
+fetchAlbums =
+  fetch "/static/json/albums.json" albumsDecoder OnAlbumsReceived
+
+
 headerDecoder : Decode.Decoder HeaderData
 headerDecoder =
   decode HeaderData
@@ -88,3 +98,33 @@ repoDecoder =
   decode Repo
     |> required "name" Decode.string
     |> required "link" Decode.string
+
+
+songsDecoder : Decode.Decoder SongData
+songsDecoder =
+  decode SongData
+    |> required "songs" (Decode.list songItemDecoder)
+
+
+songItemDecoder : Decode.Decoder Song
+songItemDecoder =
+  decode Song
+    |> required "id" Decode.int
+    |> required "title" Decode.string
+    |> required "src" Decode.string
+    |> required "albumId" Decode.int
+
+
+albumsDecoder : Decode.Decoder AlbumData
+albumsDecoder =
+  decode AlbumData
+    |> required "albums" (Decode.list albumItemDecoder)
+
+
+albumItemDecoder : Decode.Decoder Album
+albumItemDecoder =
+  decode Album
+    |> required "id" Decode.int
+    |> required "title" Decode.string
+    |> required "art" Decode.string
+    |> required "itunes" Decode.string

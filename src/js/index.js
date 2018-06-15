@@ -33,3 +33,16 @@ var mountNode = document.getElementById('app');
 
 // The third value on embed are the initial values for incomming ports into Elm
 var app = Elm.Main.embed(mountNode);
+app.ports.play.subscribe(src => {
+  var audio = document.getElementById('audio-player');
+  audio.src = src;
+  audio.play();
+});
+app.ports.pause.subscribe(() => {
+  var audio = document.getElementById('audio-player');
+  audio.pause();
+});
+app.ports.resume.subscribe(() => {
+  var audio = document.getElementById('audio-player');
+  audio.play();
+});
