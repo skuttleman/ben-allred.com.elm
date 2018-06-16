@@ -1,27 +1,44 @@
 @import '_music.scss';
 @import '_portfolio.scss';
 
-@keyframes fadein {
-  from {
-    opacity: 0;
-    height: calc(100vh - #{$HEADER-HEIGHT});
-  }
+@keyframes fadehome {
+  from { opacity: 0; height: calc(100vh - #{$HEADER-HEIGHT}); }
+}
+@keyframes fadebio {
+  from { opacity: 0; height: calc(100vh - #{$HEADER-HEIGHT}); }
+}
+@keyframes fadeportfolio {
+  from { opacity: 0; height: calc(100vh - #{$HEADER-HEIGHT}); }
+}
+@keyframes fademusic {
+  from { opacity: 0; height: calc(100vh - #{$HEADER-HEIGHT}); }
 }
 
 .app {
   height: calc(100vh - #{$HEADER-HEIGHT});
   overflow-y: auto;
   &.bottom-margin .below-the-fold {
-    padding-bottom: calc(#{$PLAYER-HEIGHT});
+    padding-bottom: $PLAYER-HEIGHT;
     min-height: calc(100vh - #{$HEADER-HEIGHT} - #{$MAIN-PADDING} - #{$PLAYER-HEIGHT});
   }
   h2 {
     font-style: italic;
     margin: $MAIN-MARGIN 0;
   }
+  &:not(.bio):not(.portfolio):not(.music) .above-the-fold {
+    animation: fadehome 1.75s;
+  }
+  &.bio .above-the-fold {
+    animation: fadebio 1.75s;
+  }
+  &.portfolio .above-the-fold {
+    animation: fadeportfolio 1.75s;
+  }
+  &.music .above-the-fold {
+    animation: fademusic 1.75s;
+  }
   .above-the-fold {
     color: #ddd;
-    animation: fadein 1.75s;
     height: calc(100vh - 175px);
     min-height: 200px;
     display: flex;

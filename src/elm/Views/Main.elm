@@ -37,7 +37,9 @@ rootView component model =
     [ div [ class "image-container" ]
       [ img [ class "bg-image", src (bgImage model) ] [] ]
     , header [] [ Header.view model]
-    , main_ [ classIf [ ( pageTitle model, True ), ( "bottom-margin", model.music.visible ) ] "app " ] [ component model ]
+    , main_
+      [ id "scroll", classIf [ ( pageTitle model, True ), ( "bottom-margin", model.music.visible ) ] "app" ]
+      [ component model ]
     , Player.view model
     , audio
       [ id "audio-player"

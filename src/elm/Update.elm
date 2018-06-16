@@ -1,8 +1,10 @@
 port module Update exposing (..)
 
+import Dom.Scroll as Scroll
 import Models exposing (..)
 import Msgs exposing (..)
 import Navigation
+import Task
 
 
 port play : String -> Cmd msg
@@ -59,9 +61,10 @@ updateMain msg model =
       OnSongsReceived songs ->
         ( { model | songs = songs }, Cmd.none )
       ChangeLocation path ->
-        ( model , Navigation.newUrl path )
+        ( model , Cmd.batch [ Task.attempt (\_ -> NoOp) (Scroll.toTop "scroll"), Navigation.newUrl path ] )
       _ ->
         ( model, Cmd.none )
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
