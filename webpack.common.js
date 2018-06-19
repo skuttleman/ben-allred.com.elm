@@ -1,10 +1,5 @@
-var path = require('path');
-
-var proxy = {
-  target: 'http://localhost:3000/index.html',
-  secure: false,
-  ignorePath: true
-};
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -12,6 +7,10 @@ module.exports = {
       './src/js/index.js'
     ]
   },
+
+  plugins: [
+    new CleanWebpackPlugin(['build'])
+  ],
 
   output: {
     path: path.resolve(__dirname + '/build'),
@@ -29,14 +28,14 @@ module.exports = {
         ]
       },
       {
-        test:    /\.html$/,
+        test: /\.html$/,
         exclude: /node_modules/,
-        loader:  'file-loader?name=[name].[ext]',
+        loader: 'file-loader?name=[name].[ext]',
       },
       {
-        test:    /\.elm$/,
+        test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader:  'elm-webpack-loader?verbose=true&warn=true',
+        loader: 'elm-webpack-loader?verbose=true&warn=true',
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -53,15 +52,5 @@ module.exports = {
     ],
 
     noParse: /\.elm$/,
-  },
-
-  devServer: {
-    inline: true,
-    stats: { colors: true },
-    proxy : {
-      '/bio': proxy,
-      '/portfolio': proxy,
-      '/music': proxy
-    },
   },
 };

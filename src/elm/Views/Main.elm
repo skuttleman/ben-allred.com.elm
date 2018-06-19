@@ -59,8 +59,3 @@ routeToComponent route =
 view : Model -> Html Msg
 view model =
   rootView (routeToComponent model.route) model
-
-
-bioView : Model -> Html Msg
-bioView model =
-  div [] [text "something stupid"]
