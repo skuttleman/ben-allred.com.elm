@@ -47,7 +47,7 @@ module.exports = {
         loader: 'file-loader',
       },
       {
-        test: /\.(jpg|png|mp3)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.(jpg|png|mp3|json)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader?name=[path][name].[ext]',
       }
     ],

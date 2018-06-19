@@ -1,6 +1,20 @@
 {
   "apps": [{
       "id": 1,
+      "title": "Formation",
+      "repos": [{
+        "name": "repo",
+        "link": "/formation"
+      }],
+      "link": "https://clojars.org/com.ben-allred/formation",
+      "tagLine": "A Clojure / Clojurescript library for declarative data validation and transformation",
+      "description": "A composable data validation and transformation library for providing user-friendly messages for invalid data.",
+      "technologies": [
+        "clojure",
+        "clojars"
+      ]
+    }, {
+      "id": 2,
       "title": "Collaj",
       "repos": [{
         "name": "repo",
@@ -14,21 +28,26 @@
         "clojars"
       ]
     }, {
-      "id": 2,
+      "id": 3,
       "title": "This Website",
       "repos": [{
-        "name": "repo",
+        "name": "cljs repo",
         "link": "/ben-allred.com.cljs"
+      }, {
+        "name": "elm repo",
+        "link": "/ben-allred.com.elm"
       }],
       "link": "https://www.ben-allred.com/",
       "tagLine": "My porfolio",
-      "description": "A recent rewrite of my personal web site using Clojurescript",
+      "description": "I use my portfolio as a touchstone for experimenting with and comparing various front-end technologies.",
       "technologies": [
         "clojurescript",
-        "reagent"
+        "reagent",
+        "elm",
+        "webpack"
       ]
     }, {
-      "id": 3,
+      "id": 4,
       "title": "Express Outbound",
       "repos": [{
         "name": "repo",
@@ -42,7 +61,7 @@
         "npm"
       ]
     }, {
-      "id": 4,
+      "id": 5,
       "title": "Git Push It",
       "repos": [{
         "name": "repo",
@@ -56,7 +75,7 @@
         "npm"
       ]
     }, {
-      "id": 5,
+      "id": 6,
       "title": "Space Raptors",
       "repos": [{
         "name": "repo",
@@ -64,12 +83,12 @@
       }],
       "link": "http://www.raptors.space/",
       "tagLine": "Defeat the carnivorous raptors. The universe needs you.",
-      "description": "A game-jam style group project primarily built over a week and a half. Most people on the team, myself included, had any prior experience with either Unity3D or making games. My primary contribution was enemy AI.",
+      "description": "A game-jam style group project primarily built over a week and a half. Most people on the team had no prior experience with either Unity3D or making games. My primary contribution was enemy AI.",
       "technologies": [
         "unity3d"
       ]
     }, {
-      "id": 6,
+      "id": 7,
       "title": "Pizza Time",
       "repos": [{
         "name": "front-end repo",
@@ -77,7 +96,7 @@
       }],
       "link": "https://pizzatime.firebaseapp.com/",
       "tagLine": "The World's Most Accurate Clock",
-      "description": "In a time that I was learning a ton about server-side programming, I wanted to see if I could still do something fully front-end. I threw this together in an hour or so in response to a joke that emerged early that day among my friends. Is it weird that I'm more proud of this than anything else in my portfolio?",
+      "description": "Is it ever not pizza time? Check out this clock and find out.",
       "technologies": [
         "scss",
         "jQuery"
