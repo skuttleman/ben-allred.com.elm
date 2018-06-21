@@ -14,10 +14,9 @@ view { music, songs, albums } =
   let
     songList = webDataToList songs .songs
     albumList = webDataToList albums .albums
-    { expanded } = music
-    maybeSong = music.song
+    { expanded, selected } = music
     selectedSongId =
-      case maybeSong of
+      case selected of
         Just ( song, _ ) -> song.id
         Nothing -> -1
   in
@@ -27,28 +26,26 @@ view { music, songs, albums } =
       _ ->
         div [ class "music-player" ]
           [ div [ classIf [ ( "expanded", expanded ), ( "collapsed", not expanded ) ] "song-list" ]
-           [ ul [ class "songs" ] (List.map (song selectedSongId albumList) songList) ]
+            [ ul [ class "songs" ] <| List.map (song selectedSongId albumList) songList ]
           , div [ class "controls" ]
             [ div [ class "now-playing", onClick TogglePlayerExpanded ]
-              [ truncateTitle music.song
+              [ truncateTitle selected
               , i [ classIf [ ( "fa-caret-down", expanded ), ( "fa-caret-up", not expanded ) ] "fa caret" ] [] ]
-            , when maybeSong music buttonContainer
-            , when maybeSong music albumLink
-            , when maybeSong music itunesLink
+            , when selected music buttonContainer
+            , when selected music albumLink
+            , when selected music itunesLink
             , div [ class "button-container" ]
               [ div [ class "button close", onClick CloseMusicPlayer ]
-                [i [ class "fa fa-times" ] [] ] ] ] ]
+                [ i [ class "fa fa-times" ] [] ] ] ] ]
 
 
 truncateTitle : Maybe ( Song, Album ) -> Html Msg
-truncateTitle maybeSong =
-  let
-    title =
-      case maybeSong of
+truncateTitle selected =
+  div [ class "song-title" ]
+    [ text <|
+      case selected of
         Just ( song, _ ) -> song.title
-        Nothing -> "Select a Song"
-  in
-    text (String.slice 0 18 title)
+        Nothing -> "Select a Song" ]
 
 
 buttonContainer : Album -> Song -> MusicModel -> Html Msg
@@ -73,8 +70,8 @@ itunesLink album song music =
 
 
 when : Maybe ( Song, Album ) -> MusicModel -> (Album -> Song -> MusicModel -> Html Msg) -> Html Msg
-when maybeSong music component =
-  case maybeSong of
+when selected music component =
+  case selected of
       Just ( song, album ) -> component album song music
       _ -> span [] []
 

@@ -21,8 +21,8 @@ preventDefault : String -> Html.Attribute Msg
 preventDefault href =
   onWithOptions
     "click"
-    { stopPropagation = True, preventDefault = True }
-    <| Decode.succeed <| ChangeLocation href
+    { stopPropagation = True, preventDefault = True } <|
+      Decode.succeed <| ChangeLocation href
 
 
 navLink : Bool -> Bool -> String -> List (Html.Attribute Msg) -> List (Html Msg) -> Html Msg

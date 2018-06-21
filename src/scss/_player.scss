@@ -8,6 +8,16 @@
   .song, .now-playing {
     cursor: pointer;
   }
+  .now-playing {
+    display: flex;
+    width: 145px;
+    .song-title {
+      width: 135px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
   .song-list {
     overflow: hidden;
     box-shadow: inset 1px 1px 5px $GREY;
@@ -37,20 +47,17 @@
     justify-content: center;
     align-items: center;
     align-content: space-between;
-    *:first-child {
+    & > *:first-child {
       flex-grow: 1;
     }
-    *:last-child {
+    & > *:last-child {
       align-self: flex-start;
     }
-    *:not(:last-child) {
+    & > *:not(:last-child) {
       margin-right: 5px;
       &:nth-child(3) {
         margin-top: 5px;
       }
-    }
-    .caret {
-      margin-left: 4px;
     }
     img {
       height: calc(#{$PLAYER-HEIGHT} - 5px);

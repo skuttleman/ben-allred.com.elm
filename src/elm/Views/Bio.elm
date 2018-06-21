@@ -13,11 +13,11 @@ view { bio } =
   div []
     [ div [ class "above-the-fold" ]
       [ h1 [] [ text "Bio" ] ]
-    , div [ class "below-the-fold" ]
-      <| List.map section <| webDataToList bio .bios ]
+    , div [ class "below-the-fold" ] <|
+      List.map section <| webDataToList bio .bios ]
 
 
 section : BioItem -> Html Msg
 section { header, paragraphs } =
-  div []
-    <| txt h2 header :: List.map (txt p) paragraphs
+  div [] <|
+    txt h2 header :: List.map (txt p) paragraphs

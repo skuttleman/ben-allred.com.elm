@@ -11,10 +11,10 @@ import Views.Components exposing (..)
 view : Model -> Html Msg
 view { route, header } =
   nav [class "top-bar nav"]
-    [ ul [class "links"]
-      <| List.map linkItem <| webDataToList header .links
-    , ul [class "navs"]
-      <| List.map (navItem route) <| webDataToList header .navs ]
+    [ ul [class "links"] <|
+      List.map linkItem <| webDataToList header .links
+    , ul [class "navs"] <|
+      List.map (navItem route) <| webDataToList header .navs ]
 
 
 linkItem : LinkData -> Html msg

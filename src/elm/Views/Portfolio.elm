@@ -15,8 +15,8 @@ view { apps } =
       [ txt h1 "Portfolio" ]
     , div [ class "below-the-fold" ]
       [ txt h2 "My Projects"
-      , ul [ class "projects" ]
-        <| List.map project <| webDataToList apps .apps ] ]
+      , ul [ class "projects" ] <|
+        List.map project <| webDataToList apps .apps ] ]
 
 
 project : AppItem -> Html Msg

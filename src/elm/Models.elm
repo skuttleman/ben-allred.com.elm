@@ -50,7 +50,7 @@ type alias Model =
 
 type alias MusicModel =
   { visible : Bool
-  , song : Maybe ( Song, Album )
+  , selected : Maybe ( Song, Album )
   , playing : Bool
   , expanded : Bool }
 
