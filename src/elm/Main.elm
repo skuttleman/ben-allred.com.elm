@@ -31,6 +31,6 @@ init { pathname } =
     , apps = RemoteData.Loading
     , songs = RemoteData.Loading
     , albums = RemoteData.Loading
-    , music = { visible = False, playing = False, expanded = False, song = Nothing, album = Nothing }
+    , music = { visible = False, playing = False, expanded = False, song = Nothing }
     , page = Nothing }
   , Cmd.batch [ fetchHeader, fetchBio, fetchApps, fetchSongs, fetchAlbums ] )

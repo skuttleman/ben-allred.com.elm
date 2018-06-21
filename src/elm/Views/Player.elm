@@ -16,10 +16,9 @@ view { music, songs, albums } =
     albumList = webDataToList albums .albums
     { expanded } = music
     maybeSong = music.song
-    maybeAlbum = music.album
     selectedSongId =
       case maybeSong of
-        Just song -> song.id
+        Just ( song, _ ) -> song.id
         Nothing -> -1
   in
     case music.visible of
@@ -33,20 +32,20 @@ view { music, songs, albums } =
             [ div [ class "now-playing", onClick TogglePlayerExpanded ]
               [ truncateTitle music.song
               , i [ classIf [ ( "fa-caret-down", expanded ), ( "fa-caret-up", not expanded ) ] "fa caret" ] [] ]
-            , when maybeAlbum maybeSong music buttonContainer
-            , when maybeAlbum maybeSong music albumLink
-            , when maybeAlbum maybeSong music itunesLink
+            , when maybeSong music buttonContainer
+            , when maybeSong music albumLink
+            , when maybeSong music itunesLink
             , div [ class "button-container" ]
               [ div [ class "button close", onClick CloseMusicPlayer ]
                 [i [ class "fa fa-times" ] [] ] ] ] ]
 
 
-truncateTitle : Maybe Song -> Html Msg
+truncateTitle : Maybe ( Song, Album ) -> Html Msg
 truncateTitle maybeSong =
   let
     title =
       case maybeSong of
-        Just song -> song.title
+        Just ( song, _ ) -> song.title
         Nothing -> "Select a Song"
   in
     text (String.slice 0 18 title)
@@ -73,10 +72,10 @@ itunesLink album song music =
       , txt span "iTunes" ] ]
 
 
-when : Maybe Album -> Maybe Song -> MusicModel -> (Album -> Song -> MusicModel -> Html Msg) -> Html Msg
-when maybeAlbum maybeSong music component =
-  case ( maybeAlbum, maybeSong ) of
-      ( Just album, Just song ) -> component album song music
+when : Maybe ( Song, Album ) -> MusicModel -> (Album -> Song -> MusicModel -> Html Msg) -> Html Msg
+when maybeSong music component =
+  case maybeSong of
+      Just ( song, album ) -> component album song music
       _ -> span [] []
 
 

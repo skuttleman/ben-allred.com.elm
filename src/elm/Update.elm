@@ -21,8 +21,7 @@ updateMusic msg music =
       ( { music | visible = False }, Cmd.none )
     SelectSong song album ->
       ( { music
-        | song = Just song
-        , album = Just album
+        | song = Just ( song, album )
         , playing = True
         , expanded = False }
       , play song.src )
