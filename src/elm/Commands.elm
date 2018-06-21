@@ -7,6 +7,7 @@ import Msgs exposing (..)
 import Models exposing (..)
 import RemoteData
 
+
 fetch : String -> Decode.Decoder t -> (RemoteData.WebData t -> Msg) -> Cmd Msg
 fetch url decoder msg =
   Http.get url decoder

@@ -35,7 +35,7 @@ rootView : (Model -> Html Msg) -> Model -> Html Msg
 rootView component model =
   div []
     [ div [ class "image-container" ]
-      [ img [ class "bg-image", src (bgImage model) ] [] ]
+      [ img [ class "bg-image", src <| bgImage model ] [] ]
     , header [] [ Header.view model]
     , main_
       [ id "scroll", classIf [ ( pageTitle model, True ), ( "bottom-margin", model.music.visible ) ] "app" ]
@@ -44,7 +44,7 @@ rootView component model =
     , audio
       [ id "audio-player"
       , style [ ( "display", "none" ) ]
-      , on "ended" (Json.succeed OnSongEnded)] [] ]
+      , on "ended" <| Json.succeed OnSongEnded ] [] ]
 
 
 routeToComponent : Route -> Model -> Html Msg

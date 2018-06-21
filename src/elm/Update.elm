@@ -45,10 +45,10 @@ updateMusic msg music =
 updateMain : Msg -> Model -> ( Model, Cmd Msg )
 updateMain msg model =
   case msg of
-      OnLocationChanged location ->
+      OnLocationChanged { pathname } ->
         ( { model
-          | route = pathToRoute location.pathname
-          , page = (routeToPage (pathToRoute location.pathname) model.header) }
+          | route = pathToRoute pathname
+          , page = routeToPage (pathToRoute pathname) model.header }
         , Cmd.none )
       OnHeaderReceived header ->
         ( { model | header = header, page = routeToPage model.route header }, Cmd.none )
@@ -61,7 +61,7 @@ updateMain msg model =
       OnSongsReceived songs ->
         ( { model | songs = songs }, Cmd.none )
       ChangeLocation path ->
-        ( model , Cmd.batch [ Task.attempt (\_ -> NoOp) (Scroll.toTop "scroll"), Navigation.newUrl path ] )
+        ( model , Cmd.batch [ Task.attempt (\_ -> NoOp) <| Scroll.toTop "scroll", Navigation.newUrl path ] )
       _ ->
         ( model, Cmd.none )
 

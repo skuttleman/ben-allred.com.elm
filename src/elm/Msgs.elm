@@ -1,13 +1,13 @@
 module Msgs exposing (Msg(..))
 
-import Models exposing (..)
 import Navigation
+import Models exposing (..)
 import RemoteData exposing (WebData)
 
 
 type Msg =
   NoOp
-  | OnLocationChanged Navigation.Location
+  | OnLocationChanged (Nav Navigation.Location)
   | OnHeaderReceived (WebData HeaderData)
   | OnBioReceived (WebData BioData)
   | OnAppsReceived (WebData AppData)

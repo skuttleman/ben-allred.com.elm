@@ -9,27 +9,29 @@ import Views.Components exposing (..)
 
 
 view : Model -> Html Msg
-view model =
+view { route, header } =
   nav [class "top-bar nav"]
     [ ul [class "links"]
-      (List.map linkItem (webDataToList model.header .links))
+      <| List.map linkItem <| webDataToList header .links
     , ul [class "navs"]
-      (List.map (navItem model.route) (webDataToList model.header .navs)) ]
+      <| List.map (navItem route) <| webDataToList header .navs ]
+
 
 linkItem : LinkData -> Html msg
-linkItem link =
-  li [class "link-element"]
-    [ blank [href link.link]
-      [i [class link.iClass] [] ]]
+linkItem { link, iClass } =
+  li [ class "link-element" ]
+    [ blank [ href link ]
+      [ i [ class iClass ] [] ] ]
 
 
 navItem : Route -> NavData -> Html Msg
-navItem route nav =
+navItem route ({ link, iClass } as nav) =
   let
-    active = route == (pathToRoute nav.link)
+    active = route == pathToRoute link
     resume = nav.text == "resume"
+    navClass = if active then " current" else ""
   in
-    li [ class ("nav-element" ++ (if active then " current" else "")) ]
-      [ navLink active resume nav.link [ href nav.link ]
-        [ i [ class ("nav-icon " ++ nav.iClass) ] []
+    li [ class <| "nav-element" ++ navClass ]
+      [ navLink active resume link [ href link ]
+        [ i [ class <| "nav-icon " ++ iClass ] []
         , span [ class "nav-text" ] [ text nav.text ] ] ]

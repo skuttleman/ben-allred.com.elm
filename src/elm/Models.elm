@@ -7,9 +7,11 @@ type alias HeaderData =
   { navs : List NavData
   , links : List LinkData }
 
+
 type alias LinkData =
   { link : String
   , iClass : String }
+
 
 type alias NavData =
   { link : String
@@ -17,12 +19,15 @@ type alias NavData =
   , text : String
   , bgImage : Maybe String }
 
+
 type alias BioData =
   { bios : List BioItem }
+
 
 type alias BioItem =
   { header : String
   , paragraphs : List String }
+
 
 type Route =
   Home
@@ -30,6 +35,7 @@ type Route =
   | Portfolio
   | Music
   | NotFound
+
 
 type alias Model =
     { route : Route
@@ -89,6 +95,10 @@ type alias Album =
   , title : String
   , art : String
   , itunes : String }
+
+
+type alias Nav a =
+  { a | pathname : String }
 
 
 routeToPath : Route -> String

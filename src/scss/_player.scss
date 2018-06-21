@@ -49,6 +49,9 @@
         margin-top: 5px;
       }
     }
+    .caret {
+      margin-left: 4px;
+    }
     img {
       height: calc(#{$PLAYER-HEIGHT} - 5px);
     }

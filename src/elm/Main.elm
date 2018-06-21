@@ -23,9 +23,9 @@ main =
         , subscriptions = subscriptions }
 
 
-init : Navigation.Location -> ( Model, Cmd Msg )
-init location =
-  ( { route = pathToRoute location.pathname
+init : Nav location -> ( Model, Cmd Msg )
+init { pathname } =
+  ( { route = pathToRoute pathname
     , header = RemoteData.Loading
     , bio = RemoteData.Loading
     , apps = RemoteData.Loading

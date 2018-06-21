@@ -8,11 +8,12 @@ import Msgs exposing (..)
 import Views.Utils exposing (..)
 import Views.Components exposing (..)
 
+
 view : Model -> Html Msg
 view { music, songs, albums } =
   let
-    songList = (webDataToList songs .songs)
-    albumList = (webDataToList albums .albums)
+    songList = webDataToList songs .songs
+    albumList = webDataToList albums .albums
     { expanded } = music
     maybeSong = music.song
     maybeAlbum = music.album
@@ -31,7 +32,7 @@ view { music, songs, albums } =
           , div [ class "controls" ]
             [ div [ class "now-playing", onClick TogglePlayerExpanded ]
               [ truncateTitle music.song
-              , i [ classIf [ ( "fa-caret-down", expanded ), ( "fa-caret-up", not expanded ) ] "fa" ] [] ]
+              , i [ classIf [ ( "fa-caret-down", expanded ), ( "fa-caret-up", not expanded ) ] "fa caret" ] [] ]
             , when maybeAlbum maybeSong music buttonContainer
             , when maybeAlbum maybeSong music albumLink
             , when maybeAlbum maybeSong music itunesLink
@@ -84,9 +85,9 @@ song selectedId albums sng =
   let
     classes = [ classIf [ ( "selected", selectedId == sng.id ) ] "song" ]
     attributes =
-      case List.head (List.filter (\album -> album.id == sng.albumId) albums) of
+      case List.head <| List.filter (\album -> album.id == sng.albumId) albums of
           Just album ->
-            ((onClick (SelectSong sng album))::classes)
+            (onClick <| SelectSong sng album) :: classes
           Nothing ->
             classes
   in

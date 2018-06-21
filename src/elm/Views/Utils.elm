@@ -14,9 +14,17 @@ webDataToList headerData f =
       []
 
 
+classFold : ( String, Bool ) -> String -> String
+classFold ( s, b ) str =
+  if b then
+    str ++ " " ++ s
+  else
+    str
+
+
 classIf : List ( String, Bool ) -> String -> Html.Attribute msg
 classIf classRules initial =
   classRules
-    |> List.foldl (\( s, b ) -> \str -> if b then str ++ " " ++ s else str) initial
+    |> List.foldl classFold initial
     |> String.trim
     |> class
