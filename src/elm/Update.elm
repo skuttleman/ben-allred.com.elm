@@ -26,7 +26,10 @@ updateMusic msg music =
         , expanded = False }
       , play song.src )
     OnSongEnded ->
-      ( { music | playing = False }, Cmd.none )
+      ( { music
+        | playing = False
+        , selected = Nothing }
+      , Cmd.none )
     TogglePlayerExpanded ->
       ( { music | expanded = not music.expanded }, Cmd.none )
     TogglePlayerPlaying ->
@@ -47,7 +50,7 @@ updateMain msg model =
       OnLocationChanged { pathname } ->
         ( { model
           | route = pathToRoute pathname
-          , page = routeToPage (pathToRoute pathname) model.header }
+          , page = pathToPage pathname model.header }
         , Cmd.none )
       OnHeaderReceived header ->
         ( { model | header = header, page = routeToPage model.route header }, Cmd.none )
@@ -60,12 +63,12 @@ updateMain msg model =
       OnSongsReceived songs ->
         ( { model | songs = songs }, Cmd.none )
       ChangeLocation path ->
-        ( model , Cmd.batch [ Task.attempt (\_ -> NoOp) <| Scroll.toTop "scroll", Navigation.newUrl path ] )
+        ( model, Cmd.batch [ Task.attempt (always NoOp) <| Scroll.toTop "scroll", Navigation.newUrl path ] )
       _ ->
         ( model, Cmd.none )
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> ( Model , Cmd Msg )
 update msg model =
   let
     ( main, cmd1 ) = updateMain msg model

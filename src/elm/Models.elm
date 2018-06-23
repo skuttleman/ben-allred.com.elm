@@ -1,5 +1,6 @@
 module Models exposing (..)
 
+import Navigation
 import RemoteData exposing (WebData)
 
 
@@ -96,8 +97,13 @@ type alias Album =
   , itunes : String }
 
 
-type alias Nav a =
-  { a | pathname : String }
+type alias Nav =
+  { pathname : String }
+
+
+locationToNav : Navigation.Location -> Nav
+locationToNav { pathname } =
+  { pathname = pathname }
 
 
 routeToPath : Route -> String
@@ -120,15 +126,15 @@ pathToRoute path =
     _ -> NotFound
 
 
-routeToPage : Route -> (WebData HeaderData) -> Maybe NavData
-routeToPage route headerData =
-  let
-    path = routeToPath route
-  in
-    case headerData of
-      RemoteData.Success data ->
-        data.navs
-          |> List.filter (\nav -> nav.link == path)
-          |> List.head
-      _ ->
-        Nothing
+pathToPage : String -> WebData HeaderData -> Maybe NavData
+pathToPage path headerData =
+  case headerData of
+    RemoteData.Success data ->
+      data.navs
+        |> List.filter (.link >> (==) path)
+        |> List.head
+    _ ->
+      Nothing
+
+routeToPage : Route -> WebData HeaderData -> Maybe NavData
+routeToPage = routeToPath >> pathToPage

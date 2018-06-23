@@ -17,7 +17,7 @@ view { route, header } =
       List.map (navItem route) <| webDataToList header .navs ]
 
 
-linkItem : LinkData -> Html msg
+linkItem : LinkData -> Html Msg
 linkItem { link, iClass } =
   li [ class "link-element" ]
     [ blank [ href link ]

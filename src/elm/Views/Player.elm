@@ -81,7 +81,7 @@ song selectedId albums sng =
   let
     classes = [ classIf [ ( "selected", selectedId == sng.id ) ] "song" ]
     attributes =
-      case List.head <| List.filter (\album -> album.id == sng.albumId) albums of
+      case albums |> List.filter (.id >> (==) sng.albumId) |> List.head of
           Just album ->
             (onClick <| SelectSong sng album) :: classes
           Nothing ->

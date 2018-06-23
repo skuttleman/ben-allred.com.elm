@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "clean": "rm -rf ./build",
-    "start": "webpack-dev-server --port 3000 --config webpack.dev.js"
+    "start": "webpack-dev-server --port 3000 --config webpack.dev.js",
+    "test": "elm test"
   },
   "repository": {
     "type": "git",

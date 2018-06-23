@@ -9,21 +9,21 @@ import Update exposing (..)
 import Views.Main as Views
 
 
-subscriptions : Model -> Sub Msg
+subscriptions : a -> Sub msg
 subscriptions model =
     Sub.none
 
 
 main : Program Never Model Msg
 main =
-    Navigation.program OnLocationChanged
-        { init = init
-        , view = Views.view
-        , update = update
-        , subscriptions = subscriptions }
+  Navigation.program (locationToNav >> OnLocationChanged)
+    { init = locationToNav >> init
+    , view = Views.view
+    , update = update
+    , subscriptions = subscriptions }
 
 
-init : Nav location -> ( Model, Cmd Msg )
+init : Nav -> ( Model, Cmd Msg)
 init { pathname } =
   ( { route = pathToRoute pathname
     , header = RemoteData.Loading

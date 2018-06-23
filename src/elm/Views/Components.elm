@@ -7,7 +7,7 @@ import Json.Decode as Decode
 import Msgs exposing(..)
 
 
-blank : List (Html.Attribute msg) -> List (Html msg) -> Html msg
+blank : List (Html.Attribute Msg) -> List (Html Msg) -> Html Msg
 blank attributes children =
   a (target "_blank" :: attributes) children
 
