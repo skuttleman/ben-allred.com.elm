@@ -35,9 +35,9 @@
   "devDependencies": {
     "css-loader": "^0.26.4",
     "image-webpack-loader": "^4.3.1",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.13.2",
-    "webpack-dev-server": "^2.4.0"
+    "webpack-dev-server": "^2.11.5"
   }
 }
