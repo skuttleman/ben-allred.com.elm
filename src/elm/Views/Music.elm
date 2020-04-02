@@ -21,7 +21,7 @@ view model =
       , txt p "I have written many songs."
       , txt p "Some of those songs have been recorded."
       , txt p "Some of those recordings are on the internet."
-      , txt p "Some of those internets are available here." ] ]
+      , txt p "Some of those internets are available here. 🤪" ] ]
 
 
 openButton : Html Msg

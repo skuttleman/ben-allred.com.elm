@@ -1,42 +1,70 @@
 {
-  "apps": [{
+  "apps": [
+    {
       "id": 1,
-      "title": "Formation",
-      "repos": [{
-        "name": "repo",
-        "link": "/formation"
-      }],
-      "link": "https://clojars.org/com.ben-allred/formation",
-      "tagLine": "A Clojure / Clojurescript library for declarative data validation and transformation",
-      "description": "A composable data validation and transformation library for providing user-friendly messages for invalid data.",
+      "title": "Espresso",
+      "repos": [
+        {
+          "name": "repo",
+          "link": "/espresso"
+        }
+      ],
+      "link": "https://clojars.org/com.ben-allred/espresso",
+      "tagLine": "A Clojurescript library for building HTTP servers on NodeJS",
+      "description": "A wrapper around NodeJS's \"http\" module for processing HTTP requests in a more idiomatically clojure way.",
       "technologies": [
         "clojure",
         "clojars"
       ]
-    }, {
+    },
+    {
       "id": 2,
-      "title": "Collaj",
-      "repos": [{
-        "name": "repo",
-        "link": "/collaj"
-      }],
-      "link": "https://clojars.org/com.ben-allred/collaj",
-      "tagLine": "A Clojure / Clojurescript port of Redux",
-      "description": "A standalone state management system based on Redux with some customization options that make it work with Reagent.",
+      "title": "Left Over Band website",
+      "repos": [
+        {
+          "name": "repo",
+          "link": "/left-over.com"
+        }
+      ],
+      "link": "https://left-over.net",
+      "tagLine": "A website for Left Over band",
+      "description": "A dynamic website that uses google calendar API and dropbox API to provide content and information about a friend's band. Deployed as a couple of AWS lambda functions.",
+      "technologies": [
+        "clojure",
+        "postgres",
+        "aws lambda"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Vow",
+      "repos": [
+        {
+          "name": "repo",
+          "link": "/collaj"
+        }
+      ],
+      "link": "https://clojars.org/com.ben-allred/vow",
+      "tagLine": "A Clojure / Clojurescript library for composing asynchronous flows",
+      "description": "A library for handling asynchronous code similar to Javascript promises. Includes plenty of functions and macros for composability and readability.",
       "technologies": [
         "clojure",
         "clojars"
       ]
-    }, {
-      "id": 3,
+    },
+    {
+      "id": 4,
       "title": "This Website",
-      "repos": [{
-        "name": "cljs repo",
-        "link": "/ben-allred.com.cljs"
-      }, {
-        "name": "elm repo",
-        "link": "/ben-allred.com.elm"
-      }],
+      "repos": [
+        {
+          "name": "cljs repo",
+          "link": "/ben-allred.com.cljs"
+        },
+        {
+          "name": "elm repo",
+          "link": "/ben-allred.com.elm"
+        }
+      ],
       "link": "https://www.ben-allred.com/",
       "tagLine": "My porfolio",
       "description": "I use my portfolio as a touchstone for experimenting with and comparing various front-end technologies.",
@@ -46,59 +74,37 @@
         "elm",
         "webpack"
       ]
-    }, {
-      "id": 4,
-      "title": "Express Outbound",
-      "repos": [{
-        "name": "repo",
-        "link": "/express-outbound"
-      }],
-      "link": "https://www.npmjs.com/package/express-outbound",
-      "tagLine": "An ExpressJS library that extends response mechanism.",
-      "description": "Enhance your ExpressJS app's middleware chain to allow access to the response before being sent out. Designed to be used for logging or enriching responses.",
-      "technologies": [
-        "node/express",
-        "npm"
-      ]
-    }, {
+    },
+    {
       "id": 5,
       "title": "Git Push It",
-      "repos": [{
-        "name": "repo",
-        "link": "/git-push-it"
-      }],
+      "repos": [
+        {
+          "name": "repo",
+          "link": "/git-push-it"
+        }
+      ],
       "link": "https://www.npmjs.com/package/git-push-it",
       "tagLine": "A fun plugin for 'git'.",
-      "description": "An open source project for playing appropriate music while pushing your code with git.",
+      "description": "An open source project for playing git-appropriate music while pushing your code with git.",
       "technologies": [
         "git",
         "npm"
       ]
-    }, {
+    },
+    {
       "id": 6,
-      "title": "Space Raptors",
-      "repos": [{
-        "name": "repo",
-        "link": "/space-raptors"
-      }],
-      "link": "http://www.raptors.space/",
-      "tagLine": "Defeat the carnivorous raptors. The universe needs you.",
-      "description": "A game-jam style group project primarily built over a week and a half. Most people on the team had no prior experience with either Unity3D or making games. My primary contribution was enemy AI.",
-      "technologies": [
-        "unity3d"
-      ]
-    }, {
-      "id": 7,
       "title": "Pizza Time",
-      "repos": [{
-        "name": "front-end repo",
-        "link": "/pizzatime"
-      }],
+      "repos": [
+        {
+          "name": "repo",
+          "link": "/pizzatime"
+        }
+      ],
       "link": "https://pizzatime.firebaseapp.com/",
       "tagLine": "The World's Most Accurate Clock",
       "description": "Is it ever not pizza time? Check out this clock and find out.",
       "technologies": [
-        "scss",
         "jQuery"
       ]
     }
