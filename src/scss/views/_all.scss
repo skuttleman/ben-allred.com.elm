@@ -38,7 +38,7 @@
     animation: fademusic 1.75s;
   }
   .above-the-fold {
-    color: #ddd;
+    color: $WHITE;
     height: calc(100vh - 175px);
     min-height: 200px;
     display: flex;

@@ -5,7 +5,7 @@ header {
   flex-direction: row;
   align-items: center;
   z-index: 1;
-  background-color: black;
+  background-color: $LIGHT-GREY;
   .nav {
     width: 100%;
     height: $HEADER-HEIGHT;
@@ -26,10 +26,10 @@ header {
           align-items: center;
           i {
             font-size: 2rem;
-            color: $LIGHT-GREY;
+            color: $DIM-LINK;
             transition: font-size 0.2s ease, color 0.2s ease;
             &:hover {
-              color: $WHITE;
+              color: $LINK-BLUE;
               font-size: 2.5rem;
             }
           }
@@ -47,18 +47,22 @@ header {
           &:hover:not(.current) {
             background-color: $WHITE;
             cursor: pointer;
+            transition: color 0.4s ease;
+            & > * {
+              color: $LINK-BLUE;
+            }
           }
           &.current {
             font-style: italic;
             padding-right: $MAIN-PADDING;
             * {
-              color: $WHITE;
+              color: $BLACK;
             }
             &:not(:first-child) {
-              border-left: 1px $WHITE solid;
+              border-left: 1px $BLACK solid;
             }
             &:not(:last-child) {
-              border-right: 1px $WHITE solid;
+              border-right: 1px $BLACK solid;
             }
           }
           & > * {
@@ -66,7 +70,7 @@ header {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: $LINK-BLUE;
+            color: $DIM-LINK;
             i {
               font-size: 1.75rem;
               @media(min-width: 750px) {
